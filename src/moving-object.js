@@ -5,13 +5,23 @@ export default class MovingObject {
         this.vel = options.vel;
         this.radius = options.radius;
         this.color = options.color;
+        this.draw()
         
     }
-    draw(ctx) {
+    draw() {
+
+        const canvas = document.getElementById("game-canvas");
+        
+        const ctx = canvas.getContext("2d");
+
         ctx.beginPath();
         ctx.arc(this.pos[0], this.pos[1], this.radius, 0, 2*Math.PI);
         ctx.stroke();
+        ctx.fillStyle = this.color
+        ctx.fill();
+
     }
+      
 }
 
 window.mo = new MovingObject({
@@ -20,12 +30,3 @@ window.mo = new MovingObject({
     radius: 5,
     color: "#00FF00"
 })
-
-// window.mo.draw()
-// window.mo.draw(ctx)
-
-// document.addEventListener("DOMContentLoaded", () => {
-
-
-    
-// })
